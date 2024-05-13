@@ -31,7 +31,7 @@ Some challenges I experienced include: Getting the CRUD (create, read, update, d
 
   You will need to install the following dependencies:
 
-  "dependencies": {
+    "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^8.0.0"
     },
