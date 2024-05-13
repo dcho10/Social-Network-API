@@ -18,7 +18,7 @@ const reactionSchema = new Schema({
         type: Date,
         default: Date.now(),
     }
-})
+});
 
 const thoughtSchema = new Schema(
     {
@@ -37,6 +37,12 @@ const thoughtSchema = new Schema(
             required: true,
         },
         reactions: [reactionSchema],
+    },
+    {
+        toJSON: {
+            virtuals: true,
+        },
+        id: false,
     }
 );
 

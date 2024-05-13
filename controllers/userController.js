@@ -70,17 +70,17 @@ module.exports = {
     },
     async addFriend(req, res) {
         try {
-            const user = await User.findOneAndUpdate(
+            const friend = await User.findOneAndUpdate(
                 { _id: req.params.userId },
-                { $addToSet: { friends: req.params.friendId} },
+                { $addToSet: { friends: req.params.friendId } },
                 { runValidators: true, new: true }
             )
 
-            if(!user) {
+            if(!friend) {
                 return res.status(404).json({ message: "No user exists." });
             }
 
-            return res.status(200).json(user);
+            return res.status(200).json(friend);
         } catch (err) {
             console.log(err);
             res.status(500).json(err);
@@ -88,17 +88,17 @@ module.exports = {
     },
     async deleteFriend(req, res) {
         try {
-            const user = await User.findOneAndUpdate(
+            const friend = await User.findOneAndUpdate(
                 { _id: req.params.userId },
                 { $pull: { friends: req.params.friendId } },
                 { new: true }
             )
 
-            if(!user) {
+            if(!friend) {
                 return res.status(404).json({ message: "No user exists." });
             }
 
-            return res.status(200).json(user);
+            return res.status(200).json(friend);
         } catch (err) {
             console.log(err);
             res.status(500).json(err);
